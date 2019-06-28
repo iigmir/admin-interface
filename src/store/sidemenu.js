@@ -25,6 +25,16 @@ export default {
         ],
         chosed_index: 0
     },
-    mutations:{},
+    mutations:
+    {
+        SET_ALL( state, obj )
+        {
+            Object.keys( state ).map( prop => state[prop] = obj[prop] );
+        },
+        SET_chosed_index( state, num )
+        {
+            state.chosed_index = num;
+        }
+    },
     actions: {}
 };

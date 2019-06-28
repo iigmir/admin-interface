@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/home/index.vue";
 import About from "./views/about/index.vue";
+import Users from "./views/users/index.vue";
 
 
 Vue.use(Router);
@@ -19,6 +20,11 @@ export default new Router({
             path: "/about",
             name: "about",
             component: About
+        },
+        {
+            path: "/users",
+            name: "users",
+            component: Users
         }
     ]
 });
