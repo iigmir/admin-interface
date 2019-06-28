@@ -38,7 +38,13 @@ export default {
         ...mapState("users", ["list"]),
         grouped_list()
         {
-            return [];
+            let ary = [];
+            let lst = this.list;
+            for( let i = 0; i<lst.length; i=i+this.grouped_number+1 )
+            {
+                ary.push( lst.slice( i, i+this.grouped_number ) );
+            }
+            return ary;
         }
     },
     methods:

@@ -23,9 +23,7 @@ describe("User.vue", () =>
                             {},{},{},{},{}
                         ]
                     },
-                    actions: {
-                        FETCH_list: () => {}
-                    }
+                    actions: { FETCH_list: () => {} }
                 }
             }
         });
@@ -34,12 +32,12 @@ describe("User.vue", () =>
     {
         const wrapper = shallowMount(User, { store, localVue });
         const grouped_list = wrapper.vm.grouped_list;
-        const correct_case = [
+        const correct_case1 = [
             [{},{},{},{},{}],
             [{},{},{},{},{}],
             [{},{},{},{},{}],
             [{},{},{},{},{}]
         ];
-        expect( grouped_list ).to.deep.equal( correct_case );
+        expect( grouped_list ).to.deep.equal( correct_case1 );
     });
 });
