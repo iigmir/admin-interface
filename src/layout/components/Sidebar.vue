@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer v-model="local_sidebar" fixed app>
+    <v-navigation-drawer v-model="local_sidebar" dark fixed app>
         <v-toolbar flat>
             <v-list>
                 <v-list-tile>

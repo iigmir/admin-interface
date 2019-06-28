@@ -1,23 +1,12 @@
 <template>
-    <v-app>
-        <Sidebar />
-        <Navigator />
-        <v-content>
-            <router-view />
-        </v-content>
-    </v-app>
+    <Layout />
 </template>
 
 <script>
-import Navigator from "./components/Navigator.vue";
-import Sidebar from "./components/Sidebar.vue";
+import Layout from "./layout/index.vue";
 
 export default {
     name: "App",
-    components:
-    {
-        Navigator,
-        Sidebar
-    }
+    components: { Layout }
 };
 </script>

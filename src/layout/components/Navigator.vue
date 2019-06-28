@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar app color="orange">
+    <v-toolbar app dark color="primary">
         <v-toolbar-side-icon v-on:click="set_tab()"></v-toolbar-side-icon>
         <v-toolbar-items class="hidden-sm-and-down">
             <v-btn v-bind:to="'/'" flat>Home</v-btn>
