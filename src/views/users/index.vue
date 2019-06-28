@@ -29,11 +29,17 @@ import { mapActions, mapState } from "vuex";
 export default {
     name: "Users",
     data () {
-        return {};
+        return {
+            grouped_number: 5,
+        };
     },
     computed:
     {
-        ...mapState("users", ["list"])
+        ...mapState("users", ["list"]),
+        grouped_list()
+        {
+            return [];
+        }
     },
     methods:
     {
