@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer v-model="sidebar_actived" fixed app>
+    <v-navigation-drawer v-model="local_sidebar" fixed app>
         <v-toolbar flat>
             <v-list>
                 <v-list-tile>
@@ -11,29 +11,15 @@
         </v-toolbar>
         <v-divider></v-divider>
         <v-list>
-            <!-- dense class="pt-0" -->
-            <v-list-tile>
+            <v-list-tile
+                v-for="(item, index) in menus"
+                v-bind:key="item.name"
+                v-on:click="switch_tab(index)">
                 <v-list-tile-action>
-                    <v-icon> home </v-icon>
+                    <v-icon>{{ item.icon }}</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
-                    <v-list-tile-title>Page 1</v-list-tile-title>
-                </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile>
-                <v-list-tile-action>
-                    <v-icon> dashboard </v-icon>
-                </v-list-tile-action>
-                <v-list-tile-content>
-                    <v-list-tile-title>Page 2</v-list-tile-title>
-                </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile>
-                <v-list-tile-action>
-                    <v-icon> event </v-icon>
-                </v-list-tile-action>
-                <v-list-tile-content>
-                    <v-list-tile-title>Page 3</v-list-tile-title>
+                    <v-list-tile-title>{{ item.value }}</v-list-tile-title>
                 </v-list-tile-content>
             </v-list-tile>
         </v-list>
@@ -44,9 +30,39 @@
 import { mapState } from "vuex";
 
 export default {
+    data()
+    {
+        return {
+            local_sidebar: false,
+        };
+    },
+    watch:
+    {
+        sidebar_actived(val)
+        {
+            this.local_sidebar = val;
+        }
+    },
     computed:
     {
-        ...mapState("layout", ["sidebar_actived"])
+        ...mapState("layout", ["sidebar_actived"]),
+        ...mapState("sidemenu", [
+            "title",
+            "menus",
+            "chosed_index"
+        ]),
+    },
+    methods:
+    {
+        switch_tab(id)
+        {
+            console.log(id);
+            return;
+        }
+    },
+    created()
+    {
+        this.local_sidebar = this.sidebar_actived;
     }
 };
 </script>
