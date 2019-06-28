@@ -1,7 +1,7 @@
 <template>
     <v-app>
-        <Navigator />
         <Sidebar />
+        <Navigator />
         <v-content>
             <router-view />
         </v-content>
