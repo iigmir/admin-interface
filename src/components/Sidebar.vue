@@ -1,13 +1,13 @@
 <template>
-    <v-navigation-drawer permanent>
+    <v-navigation-drawer v-model="sidebar_actived">
         <v-toolbar flat>
-        <v-list>
-            <v-list-tile>
-                <v-list-tile-title class="title">
-                    Application
-                </v-list-tile-title>
-            </v-list-tile>
-        </v-list>
+            <v-list>
+                <v-list-tile>
+                    <v-list-tile-title class="title">
+                        Application
+                    </v-list-tile-title>
+                </v-list-tile>
+            </v-list>
         </v-toolbar>
         <v-divider></v-divider>
         <v-list>
@@ -39,3 +39,14 @@
         </v-list>
     </v-navigation-drawer>
 </template>
+
+<script>
+import { mapState } from "vuex";
+
+export default {
+    computed:
+    {
+        ...mapState("layout", ["sidebar_actived"])
+    }
+};
+</script>

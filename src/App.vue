@@ -1,7 +1,7 @@
 <template>
     <v-app>
         <Navigator />
-        <Sidebar v-if="sidebar_actived" />
+        <Sidebar />
         <v-content>
             <router-view />
         </v-content>
@@ -11,7 +11,6 @@
 <script>
 import Navigator from "./components/Navigator.vue";
 import Sidebar from "./components/Sidebar.vue";
-import { mapState } from "vuex";
 
 export default {
     name: "App",
@@ -19,10 +18,6 @@ export default {
     {
         Navigator,
         Sidebar
-    },
-    computed:
-    {
-        ...mapState("layout", ["sidebar_actived"])
     }
 };
 </script>
