@@ -2,18 +2,18 @@ export default {
     namespaced: true,
     state:
     {
-        users: [],
+        list: [],
     },
     mutations:
     {
-        SET_users(state, array)
+        SET_list(state, array)
         {
-            state.users = array;
+            state.list = array;
         }
     },
     actions:
     {
-        FETCH_users({ commit })
+        FETCH_list({ commit })
         {
             let param = {
                 results: 20
@@ -22,7 +22,7 @@ export default {
             let api = "https://randomuser.me/api" + query;
             fetch( api )
                 .then( data => data.json() )
-                .then( data => commit( "SET_users", data ) );
+                .then( data => commit( "SET_list", data.results ) );
         }
     }
 };
