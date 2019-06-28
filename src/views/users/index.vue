@@ -45,6 +45,8 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
+
 export default {
     data () {
         return {
@@ -69,6 +71,18 @@ export default {
                 }
             ]
         };
+    },
+    computed:
+    {
+        ...mapState("users", ["users"])
+    },
+    methods:
+    {
+        ...mapActions("users", ["FETCH_users"])
+    },
+    created()
+    {
+        this.FETCH_users();
     }
 };
 </script>
