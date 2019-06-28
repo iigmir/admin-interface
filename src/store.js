@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import layout from "../layout/store/layout";
-import sidemenu from "../layout/store/sidemenu";
+import layout from "./layout/store/layout";
+import sidemenu from "./layout/store/sidemenu";
 
 Vue.use(Vuex);
 
