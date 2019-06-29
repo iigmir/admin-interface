@@ -7,32 +7,37 @@ const localVue = createLocalVue();
 
 localVue.use(Vuex);
 
+/** 
+ * Just don't mind "Duplicate keys detected" warning:
+ * Vue optimised it's render by key.
+ * In production, FETCH_list function will get datas by Web API.
+*/
 describe("User.vue", () =>
 {
     let store;
-    let users;
+    let mock_list = {
+        email: "",
+        picture: { thumbnail: "" },
+        name: { last: "" },
+        location: { city: "" },
+    };
+    let list = [];
     beforeEach(() =>
     {
-        users = {
-            namespaced: true,
-            state: {
-                list: [
-                    {},{},{},{},{},
-                    {},{},{},{},{},
-                    {},{},{},{},{},
-                    {},{},{},{},{}
-                ]
-            },
-            actions: {
-                FETCH_list: () => {}
-            },
-        };
+        for( let i=0; i<20; i++ )
+        {
+            list.push(mock_list);
+        }
         store = new Vuex.Store({
-            state: {},
-            modules: { users }
+            modules: {
+                users: {
+                    namespaced: true,
+                    state: { list },
+                    actions: { FETCH_list: () => {} },
+                }
+            }
         });
     });
-    // Test cases
     it("grouped_list should be correct sorted", () =>
     {
         const wrapper = shallowMount(User, { store, localVue });
@@ -43,6 +48,14 @@ describe("User.vue", () =>
             [{},{},{},{},{}],
             [{},{},{},{},{}]
         ];
-        expect( grouped_list ).to.deep.equal( correct_case1 );
+        expect( grouped_list.length ).to.equal( correct_case1.length );
+        expect( grouped_list[0].length ).to.equal( correct_case1[0].length );
+        expect( grouped_list[0].length ).to.equal( wrapper.vm.grouped_number );
+    });
+    it("grouped_list should sorted by grouped_number", () =>
+    {
+        const wrapper = shallowMount(User, { store, localVue });
+        const grouped_list = wrapper.vm.grouped_list;
+        expect( grouped_list[0].length ).to.equal( wrapper.vm.grouped_number );
     });
 });
