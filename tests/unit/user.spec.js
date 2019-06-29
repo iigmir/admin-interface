@@ -10,24 +10,29 @@ localVue.use(Vuex);
 describe("User.vue", () =>
 {
     let store;
+    let users;
     beforeEach(() =>
     {
+        users = {
+            namespaced: true,
+            state: {
+                list: [
+                    {},{},{},{},{},
+                    {},{},{},{},{},
+                    {},{},{},{},{},
+                    {},{},{},{},{}
+                ]
+            },
+            actions: {
+                FETCH_list: () => {}
+            },
+        };
         store = new Vuex.Store({
-            modules: {
-                users: {
-                    state: {
-                        list: [
-                            {},{},{},{},{},
-                            {},{},{},{},{},
-                            {},{},{},{},{},
-                            {},{},{},{},{}
-                        ]
-                    },
-                    actions: { FETCH_list: () => {} }
-                }
-            }
+            state: {},
+            modules: { users }
         });
     });
+    // Test cases
     it("grouped_list should be correct sorted", () =>
     {
         const wrapper = shallowMount(User, { store, localVue });
